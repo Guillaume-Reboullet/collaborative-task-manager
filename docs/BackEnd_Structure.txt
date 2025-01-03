@@ -1,0 +1,13 @@
+backend/
+├── src/
+│   ├── index.ts             # Entry point
+│   ├── resolvers/           # GraphQL resolvers
+│   ├── schema/              # GraphQL schema definitions
+│   ├── utils/               # Utility functions
+│   ├── config/              # Configuration files (e.g., dotenv)
+├── package.json             # Package configuration
+├── tsconfig.json            # TypeScript configuration
+├── nodemon.json             # Nodemon configuration
+├── Dockerfile               # Dockerfile for backend
+├── .dockerignore            # Docker ignore rules
+└── .env                     # Environment variables
