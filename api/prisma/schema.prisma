@@ -1,5 +1,8 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+  engineType = "binary"
+  envFile   = "../.env"
 }
 
 datasource db {
@@ -7,43 +10,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  Admin
-  Manager
-  Member
-}
-
 model User {
-  id       String   @id @default(uuid()) // Primary key as UUID
-  name     String
-  email    String   @unique
-  password String
-  role     Role     @default(Member) // Enum field with default value
-  teams    Team[]   @relation("UserTeams") // Relation to Team members
-  tasks    Task[]   @relation("TaskAssignee") // Relation to assigned tasks
-  notifications Notification[] @relation("NotificationRecipient") // Notifications for the user
+  id            String         @id @default(uuid())
+  name          String
+  email         String         @unique
+  password      String
+  role          Role
+  teams         Team[]         @relation("UserTeams")
+  assignedTasks Task[]         @relation("TaskAssignee")
+  notifications Notification[] @relation("UserNotifications")
 }
 
 model Team {
-  id      String  @id @default(uuid()) // Primary key as UUID
+  id      String @id @default(uuid())
   name    String
-  members User[]  @relation("UserTeams") // Relation to users
+  members User[] @relation("UserTeams")
 }
 
 model Task {
-  id          String @id @default(uuid()) // Primary key as UUID
+  id          String   @id @default(uuid())
   title       String
   description String
   priority    String
   deadline    DateTime
-  assignee    User   @relation("TaskAssignee", fields: [assigneeId], references: [id]) // Relation to User
-  assigneeId  String
+  assignee    User?    @relation("TaskAssignee", fields: [assigneeId], references: [id])
+  assigneeId  String?
 }
 
 model Notification {
-  id         String @id @default(uuid()) // Primary key as UUID
-  type       String
-  message    String
-  recipient  User   @relation("NotificationRecipient", fields: [recipientId], references: [id]) // Relation to User
-  recipientId String
+  id          String  @id @default(uuid())
+  type        String
+  message     String
+  recipient   User?   @relation("UserNotifications", fields: [recipientId], references: [id])
+  recipientId String?
+}
+
+enum Role {
+  Admin
+  Manager
+  Member
 }

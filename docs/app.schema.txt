@@ -1,0 +1,47 @@
+frontend/
+├── public/                     # Static files
+│   ├── index.html              # Entry HTML file
+├── src/
+│   ├── apollo/                 # Apollo Client setup
+│   │   ├── client.ts           # Apollo client instance
+│   │   ├── cache.ts            # Apollo cache setup
+│   ├── assets/                 # Static assets
+│   │   ├── styles/             # Global styles
+│   │   ├── images/             # Images and icons
+│   ├── components/             # Reusable components
+│   │   ├── common/             # Shared components
+│   │   │   ├── Button.tsx
+│   │   │   ├── Input.tsx
+│   │   ├── layout/             # Layout components
+│   │   │   ├── Header.tsx
+│   │   │   ├── Footer.tsx
+│   ├── features/               # Feature-specific modules
+│   │   ├── auth/               # Authentication
+│   │   │   ├── pages/          # Pages for auth
+│   │   │   │   ├── LoginPage.tsx
+│   │   │   │   ├── SignupPage.tsx
+│   │   │   ├── components/     # Auth-specific components
+│   │   │   ├── services/       # Auth API services
+│   │   ├── tasks/              # Task management
+│   │   │   ├── pages/
+│   │   │   │   ├── TaskListPage.tsx
+│   │   │   │   ├── TaskDetailPage.tsx
+│   │   │   ├── components/
+│   │   │   ├── services/
+│   ├── graphql/                # GraphQL operations
+│   │   ├── queries/
+│   │   ├── mutations/
+│   ├── hooks/                  # Custom hooks
+│   ├── providers/              # React context providers
+│   ├── routes/                 # App routes
+│   │   ├── AppRoutes.tsx
+│   │   ├── ProtectedRoute.tsx
+│   ├── store/                  # State management
+│   ├── utils/                  # Utility functions
+│   ├── App.tsx                 # Root component
+│   ├── main.tsx                # Entry point
+│   ├── vite.config.ts          # Vite configuration
+├── package.json                # Frontend dependencies
+├── tsconfig.json               # TypeScript configuration
+├── Dockerfile                  # Dockerfile for frontend
+├── .env                        # Environment variables

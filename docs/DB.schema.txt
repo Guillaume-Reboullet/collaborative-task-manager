@@ -1,0 +1,40 @@
+model User {
+  id       String   @id @default(uuid())
+  name     String
+  email    String   @unique
+  password String
+  role     Role
+  teams    Team[]   @relation("UserTeams")
+  assignedTasks Task[]    @relation("UserTasks") 
+  notifications Notification[]    @relation("UserNotifications") 
+}
+
+model Team {
+  id      String   @id @default(uuid())
+  name    String
+  members User[]   @relation("UserTeams")
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  priority    String
+  deadline    DateTime
+  assignee    User?    @relation(fields: [assigneeId], references: [id])
+  assigneeId  String?
+}
+
+model Notification {
+  id         String   @id @default(uuid())
+  type       String
+  message    String
+  recipient  User?    @relation(fields: [recipientId], references: [id])
+  recipientId String?
+}
+
+enum Role {
+  Admin
+  Manager
+  Member
+}

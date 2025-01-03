@@ -1,0 +1,38 @@
+backend/
+├── prisma/                     # Prisma setup
+│   ├── schema.prisma           # Prisma schema
+│   ├── migrations/             # Migration files
+├── src/
+│   ├── main.ts                 # Entry point
+│   ├── modules/                # Feature modules
+│   │   ├── auth/               # Authentication module
+│   │   │   ├── auth.module.ts  # Auth module definition
+│   │   │   ├── auth.resolver.ts # GraphQL resolvers for auth
+│   │   │   ├── auth.service.ts # Auth business logic
+│   │   │   ├── auth.types.ts   # GraphQL types for auth
+│   │   ├── tasks/              # Task management module
+│   │   │   ├── tasks.module.ts
+│   │   │   ├── tasks.resolver.ts
+│   │   │   ├── tasks.service.ts
+│   │   │   ├── tasks.types.ts
+│   │   ├── notifications/      # Notifications module
+│   │   │   ├── notifications.module.ts
+│   │   │   ├── notifications.resolver.ts
+│   │   │   ├── notifications.service.ts
+│   ├── common/                 # Shared resources
+│   │   ├── utils/              # Utility functions
+│   │   │   ├── jwt.ts          # JWT utilities
+│   │   │   ├── hash.ts         # Password hashing utilities
+│   │   ├── decorators/         # Custom decorators
+│   │   ├── guards/             # Auth and role guards
+│   ├── database/               # Prisma client setup
+│   │   ├── prisma.service.ts   # Prisma service for database interaction
+│   ├── app.module.ts           # Root module
+│   ├── config/                 # Configuration
+│   │   ├── config.module.ts
+│   │   ├── config.service.ts
+│   │   ├── environment.ts      # Environment configuration
+├── package.json                # Backend dependencies
+├── tsconfig.json               # TypeScript configuration
+├── Dockerfile                  # Dockerfile for backend
+├── .env                        # Environment variables
